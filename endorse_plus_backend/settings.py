@@ -36,7 +36,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'endorse_plus-backend.herokuapp.com',
+    'endorse-plus-backend.herokuapp.com',
 ]
 
 
