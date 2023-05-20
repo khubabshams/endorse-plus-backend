@@ -1,2 +1,2 @@
 release: python manage.py makemigrations && python manage.py migrate
-web: gunicorn wiserbuys_backend.wsgi
+web: gunicorn endorse_plus_backend.wsgi
