@@ -37,6 +37,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'endorse-plus-backend.herokuapp.com',
+    'localhost'
 ]
 
 
@@ -59,6 +60,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'dj_rest_auth.registration',
 
+    'profiles',
 ]
 
 SITE_ID = 1
