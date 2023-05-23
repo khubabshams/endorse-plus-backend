@@ -8,7 +8,8 @@ class Profile(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
     name = models.CharField(max_length=300, blank=True)
-    content = models.TextField(blank=True)
+    linkedin_profile_url = models.URLField(max_length=300, blank=True)
+    summary = models.TextField(blank=True)
     image = models.ImageField(
         upload_to='images/',
         default='../default_profile_llqwrh'
