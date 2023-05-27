@@ -21,6 +21,7 @@ class Recommendation(models.Model):
 
     class Meta:
         ordering = ['-created_at']
+        unique_together = ['profile', 'receiver', 'related_experience']
 
     def __str__(self):
         return f"{self.profile}: recommends {self.receiver}"
