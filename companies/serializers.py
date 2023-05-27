@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Company
+from .models import Company, Relationship
 
 
 class CompanySerializer(serializers.ModelSerializer):
@@ -7,14 +7,14 @@ class CompanySerializer(serializers.ModelSerializer):
     class Meta:
         model = Company
         fields = [
-            'id', 'name', 'created_at', 'updated_at', 'description'
+            'id', 'name', 'archive', 'created_at', 'updated_at', 'description'
         ]
 
 
 class RelationshipSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Company
+        model = Relationship
         fields = [
-            'id', 'name', 'created_at', 'updated_at', 'description'
+            'id', 'name', 'archive', 'created_at'
         ]
