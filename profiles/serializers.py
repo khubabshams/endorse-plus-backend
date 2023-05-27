@@ -4,6 +4,11 @@ from .models import Profile
 
 class ProfileSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
+    is_owner = serializers.SerializerMethodField()
+
+    def get_is_owner(self, obj):
+        request = self.context['request']
+        return request.user == obj.owner
 
     class Meta:
         model = Profile
@@ -11,5 +16,5 @@ class ProfileSerializer(serializers.ModelSerializer):
             'id', 'owner', 'created_at', 'updated_at', 'name',
             'linkedin_profile_url', 'summary', 'image', 'requests_sent',
             'requests_received', 'recommendations_sent',
-            'recommendations_received', 'boosts'
+            'recommendations_received', 'boosts', 'is_owner'
         ]
