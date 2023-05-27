@@ -34,7 +34,7 @@ class RecommendationSerializer(serializers.ModelSerializer):
 
     def __init__(self, *args, **kwargs):
         """
-        override init to filter the queryset of receiver 
+        override init to filter the queryset of receiver
         to not be same as sender, and experience to be one of receivers'
         """
         super(RecommendationSerializer, self).__init__(*args, **kwargs)
