@@ -31,7 +31,7 @@ class RequestSerializer(serializers.ModelSerializer):
             self.fields['receiver'].queryset = Profile.objects.\
                 filter(~Q(owner=request_user))
 
-    def create(sefl, validated_data):
+    def create(self, validated_data):
         """
         override create to handle record duplication error
         """
