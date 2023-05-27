@@ -13,7 +13,8 @@ class Recommendation(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
     content = models.TextField()
     related_experience = models.ForeignKey(Experience,
-                                           on_delete=models.CASCADE)
+                                           on_delete=models.CASCADE,
+                                           related_name='recommendations')
     relation = models.ForeignKey(Relationship, on_delete=models.SET_NULL,
                                  null=True, blank=True)
     is_featured = models.BooleanField(default=False)
