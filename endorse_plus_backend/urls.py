@@ -25,8 +25,10 @@ urlpatterns = [
 
     path('', include('profiles.urls')),
     path('', include('companies.urls')),
+    path('', include('relationships.urls')),
     path('', include('experiences.urls')),
     path('', include('recommendation_requests.urls')),
     path('', include('boosts.urls')),
+    path('', include('recommendations.urls')),
 
 ]

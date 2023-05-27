@@ -63,9 +63,11 @@ INSTALLED_APPS = [
 
     'profiles',
     'companies',
+    'relationships',
     'experiences',
     'recommendation_requests',
     'boosts',
+    'recommendations',
 ]
 
 SITE_ID = 1

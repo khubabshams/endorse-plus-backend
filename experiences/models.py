@@ -21,4 +21,4 @@ class Experience(models.Model):
 
     def __str__(self):
         date_to = not self.is_current and f'{self.date_to}' or 'now'
-        return f"{self.owner}: {self.title} at {self.company} from {self.date_from} until {date_to}"
+        return f"{self.profile}: {self.title} at {self.company} from {self.date_from} until {date_to}"

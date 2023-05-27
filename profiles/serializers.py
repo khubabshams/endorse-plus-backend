@@ -9,5 +9,7 @@ class ProfileSerializer(serializers.ModelSerializer):
         model = Profile
         fields = [
             'id', 'owner', 'created_at', 'updated_at', 'name',
-            'linkedin_profile_url', 'summary', 'image',
+            'linkedin_profile_url', 'summary', 'image', 'requests_sent',
+            'requests_received', 'recommendations_sent',
+            'recommendations_received', 'boosts'
         ]

@@ -9,5 +9,6 @@ class ExperienceSerializer(serializers.ModelSerializer):
         model = Experience
         fields = [
             'id', 'profile', 'created_at', 'updated_at', 'title', 'company',
-            'location', 'date_from', 'date_to', 'is_current', 'description'
+            'location', 'date_from', 'date_to', 'is_current', 'description',
+            'recommendations'
         ]

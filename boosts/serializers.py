@@ -11,7 +11,7 @@ class BoostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Boost
         fields = [
-            'id', 'profile', 'created_at',  # 'recommendation',
+            'id', 'profile', 'created_at', 'recommendation',
         ]
 
     def create(sefl, validated_data):
