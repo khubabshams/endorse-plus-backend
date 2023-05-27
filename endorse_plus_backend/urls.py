@@ -26,5 +26,6 @@ urlpatterns = [
     path('', include('profiles.urls')),
     path('', include('companies.urls')),
     path('', include('experiences.urls')),
+    path('', include('recommendation_requests.urls')),
 
 ]
