@@ -19,7 +19,7 @@ class BoostSerializer(serializers.ModelSerializer):
             'id', 'profile', 'created_at', 'recommendation', 'is_owner'
         ]
 
-    def create(sefl, validated_data):
+    def create(self, validated_data):
         """
         override create to handle record duplication error
         """
