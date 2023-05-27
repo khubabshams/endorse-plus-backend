@@ -4,7 +4,8 @@ from companies.models import Company
 
 
 class Experience(models.Model):
-    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE,
+                                related_name='experiences')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
     title = models.CharField(max_length=250)
