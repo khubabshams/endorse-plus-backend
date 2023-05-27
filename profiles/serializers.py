@@ -1,14 +1,28 @@
 from rest_framework import serializers
 from .models import Profile
+from recommendation_requests.models import Request
 
 
 class ProfileSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
+    unseen_requests_count = serializers.SerializerMethodField()
+    recommendations_sent_count = serializers.ReadOnlyField()
+    recommendations_received_count = serializers.ReadOnlyField()
+    requests_sent_count = serializers.ReadOnlyField()
+    requests_received_count = serializers.ReadOnlyField()
+    boosts_count = serializers.ReadOnlyField()
 
     def get_is_owner(self, obj):
         request = self.context['request']
         return request.user == obj.owner
+
+    def get_unseen_requests_count(self, obj):
+        user = self.context['request'].user
+        if user.id:
+            return Request.objects.filter(seen=False, profile=user.profile).\
+                count()
+        return None
 
     class Meta:
         model = Profile
@@ -16,5 +30,8 @@ class ProfileSerializer(serializers.ModelSerializer):
             'id', 'owner', 'created_at', 'updated_at', 'name',
             'linkedin_profile_url', 'summary', 'image', 'requests_sent',
             'requests_received', 'recommendations_sent',
-            'recommendations_received', 'boosts', 'is_owner'
+            'recommendations_received', 'boosts', 'is_owner',
+            'unseen_requests_count', 'recommendations_sent_count',
+            'recommendations_received_count', 'requests_sent_count',
+            'requests_received_count', 'boosts_count'
         ]

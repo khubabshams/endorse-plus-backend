@@ -11,6 +11,7 @@ class RecommendationSerializer(serializers.ModelSerializer):
     profile = serializers.ReadOnlyField(source='profile.owner.username')
     is_owner = serializers.SerializerMethodField()
     boost_id = serializers.SerializerMethodField()
+    boosts_count = serializers.ReadOnlyField()
 
     def get_is_owner(self, obj):
         user = self.context['request'].user
@@ -29,7 +30,7 @@ class RecommendationSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'profile', 'created_at', 'updated_at', 'receiver', 'content',
             'is_featured', 'related_experience', 'relation', 'boosts',
-            'is_owner', 'boost_id'
+            'is_owner', 'boost_id', 'boosts_count'
         ]
 
     def __init__(self, *args, **kwargs):
