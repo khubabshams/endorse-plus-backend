@@ -6,14 +6,11 @@ from .serializers import CompanySerializer
 
 class CompanyList(generics.ListCreateAPIView):
     serializer_class = CompanySerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    permission_classes = [permissions.IsAdminUser]
     queryset = Company.objects.all()
-
-    def perform_create(self, serializer):
-        serializer.save(profile=self.request.user.profile)
 
 
 class CompanyDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = CompanySerializer
-    permission_classes = [IsOwnerOrReadonly]
+    permission_classes = [permissions.IsAdminUser]
     queryset = Company.objects.all()
