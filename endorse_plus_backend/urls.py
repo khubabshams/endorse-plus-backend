@@ -27,5 +27,6 @@ urlpatterns = [
     path('', include('companies.urls')),
     path('', include('experiences.urls')),
     path('', include('recommendation_requests.urls')),
+    path('', include('boosts.urls')),
 
 ]

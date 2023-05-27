@@ -33,6 +33,6 @@ class RequestSerializer(serializers.ModelSerializer):
             return super().create(validated_data)
         except IntegrityError:
             raise serializers.ValidationError(({
-                'error_message':
+                'detail':
                 'You cannot send recommendation request to same person twice!',
             }))
