@@ -13,7 +13,7 @@ class BoostList(generics.ListCreateAPIView):
         serializer.save(profile=self.request.user.profile)
 
 
-class BoostDetail(generics.RetrieveUpdateDestroyAPIView):
+class BoostDetail(generics.RetrieveDestroyAPIView):
     serializer_class = BoostSerializer
     permission_classes = [IsOwnerOrReadonly]
     queryset = Boost.objects.all()
