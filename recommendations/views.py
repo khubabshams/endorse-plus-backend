@@ -1,5 +1,5 @@
 from django.db.models import Count
-from rest_framework import generics, permissions
+from rest_framework import generics, permissions, filters
 from endorse_plus_backend.permissions import IsOwnerOrReadonly
 from .models import Recommendation
 from .serializers import RecommendationSerializer
@@ -11,6 +11,13 @@ class RecommendationList(generics.ListCreateAPIView):
     queryset = Recommendation.objects.annotate(
         boosts_count=Count('boosts', distinct=True),
     ).order_by('-created_at')
+    filter_backends = [
+        filters.OrderingFilter,
+    ]
+    ordering_fields = [
+        'boosts_count',
+        'boosts__created_at',
+    ]
 
     def perform_create(self, serializer):
         serializer.save(profile=self.request.user.profile)
