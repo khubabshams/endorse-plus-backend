@@ -19,7 +19,7 @@ class ProfileSerializer(serializers.ModelSerializer):
 
     def get_unseen_requests_count(self, obj):
         user = self.context['request'].user
-        if user.id:
+        if user.is_authenticated:
             return Request.objects.filter(seen=False, profile=user.profile).\
                 count()
         return None

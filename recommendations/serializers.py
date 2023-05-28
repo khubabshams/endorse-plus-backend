@@ -40,7 +40,7 @@ class RecommendationSerializer(serializers.ModelSerializer):
         """
         super(RecommendationSerializer, self).__init__(*args, **kwargs)
         user = self.context['request'].user
-        if user.id:
+        if user.is_authenticated:
             self.fields['receiver'].queryset = Profile.objects.\
                 filter(~Q(owner=user))
 
