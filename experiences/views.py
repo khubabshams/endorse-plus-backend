@@ -13,6 +13,12 @@ class ExperienceList(generics.ListCreateAPIView):
     ).order_by('-created_at')
     filter_backends = [
         filters.OrderingFilter,
+        filters.SearchFilter,
+    ]
+    search_fields = [
+        'title',
+        'company__name',
+        'profile__owner__username',
     ]
     ordering_fields = [
         'recommendations_count',

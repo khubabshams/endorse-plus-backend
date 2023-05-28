@@ -18,6 +18,10 @@ class ProfileList(generics.ListAPIView):
     ).order_by('-created_at')
     filter_backends = [
         filters.OrderingFilter,
+        filters.SearchFilter,
+    ]
+    search_fields = [
+        'profile__owner__username',
     ]
     ordering_fields = [
         'recommendations_sent_count',

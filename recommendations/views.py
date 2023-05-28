@@ -13,6 +13,12 @@ class RecommendationList(generics.ListCreateAPIView):
     ).order_by('-created_at')
     filter_backends = [
         filters.OrderingFilter,
+        filters.SearchFilter,
+    ]
+    search_fields = [
+        'profile__owner__username',
+        'receiver__owner__username',
+        'related_experience__title',
     ]
     ordering_fields = [
         'boosts_count',
