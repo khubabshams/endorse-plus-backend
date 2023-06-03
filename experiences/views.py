@@ -1,5 +1,6 @@
 from django.db.models import Count
 from rest_framework import generics, permissions, filters
+from django_filters.rest_framework import DjangoFilterBackend
 from endorse_plus_backend.permissions import IsOwnerOrReadonly
 from .models import Experience
 from .serializers import ExperienceSerializer
@@ -14,6 +15,12 @@ class ExperienceList(generics.ListCreateAPIView):
     filter_backends = [
         filters.OrderingFilter,
         filters.SearchFilter,
+        DjangoFilterBackend,
+    ]
+    filterset_fields = [
+        'profile',
+        'company',
+        'recommendations__profile',
     ]
     search_fields = [
         'title',

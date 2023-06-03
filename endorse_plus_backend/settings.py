@@ -37,7 +37,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'endorse-plus-backend.herokuapp.com',
-    'localhost'
+    '8000-kshamse-endorseplusback-8blwv25z0p3.ws-eu98.gitpod.io'
 ]
 
 
@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cloudinary',
     'rest_framework',
+    'django_filters',
     'rest_framework.authtoken',
     'dj_rest_auth',
     'django.contrib.sites',

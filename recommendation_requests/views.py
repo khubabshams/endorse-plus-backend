@@ -1,4 +1,5 @@
 from rest_framework import generics, permissions, filters
+from django_filters.rest_framework import DjangoFilterBackend
 from endorse_plus_backend.permissions import IsOwnerOrReadonly
 from .models import Request
 from .serializers import RequestSerializer
@@ -11,6 +12,12 @@ class RequestList(generics.ListCreateAPIView):
     filter_backends = [
         filters.OrderingFilter,
         filters.SearchFilter,
+        DjangoFilterBackend,
+    ]
+    filterset_fields = [
+        'profile',
+        'receiver',
+        'seen',
     ]
     search_fields = [
         'profile__owner__username',
