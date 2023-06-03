@@ -1,4 +1,5 @@
 from django.db.models import Q
+from django.contrib.humanize.templatetags.humanize import naturaltime
 from django.db import IntegrityError
 from rest_framework import serializers
 from .models import Recommendation
@@ -12,6 +13,8 @@ class RecommendationSerializer(serializers.ModelSerializer):
     is_owner = serializers.SerializerMethodField()
     boost_id = serializers.SerializerMethodField()
     boosts_count = serializers.ReadOnlyField()
+    created_at = serializers.SerializerMethodField()
+    updated_at = serializers.SerializerMethodField()
 
     def get_is_owner(self, obj):
         user = self.context['request'].user
@@ -24,6 +27,12 @@ class RecommendationSerializer(serializers.ModelSerializer):
                                          recommendation=obj).first()
             return boost and boost.id or None
         return None
+
+    def get_created_at(self, obj):
+        return naturaltime(obj.created_at)
+
+    def get_updated_at(self, obj):
+        return naturaltime(obj.updated_at)
 
     class Meta:
         model = Recommendation
