@@ -22,7 +22,7 @@ class ProfileSerializer(serializers.ModelSerializer):
         if user.is_authenticated:
             return Request.objects.filter(seen=False, profile=user.profile).\
                 count()
-        return None
+        return 0
 
     class Meta:
         model = Profile
