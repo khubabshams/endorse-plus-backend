@@ -32,6 +32,6 @@ class ProfileSerializer(serializers.ModelSerializer):
             'requests_received', 'recommendations_sent',
             'recommendations_received', 'boosts', 'is_owner',
             'unseen_requests_count', 'recommendations_sent_count',
-            'recommendations_received_count', 'requests_sent_count',
-            'requests_received_count', 'boosts_count'
+            'experiences', 'recommendations_received_count',
+            'requests_sent_count', 'requests_received_count', 'boosts_count'
         ]
