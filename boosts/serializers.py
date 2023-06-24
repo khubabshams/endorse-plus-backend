@@ -6,7 +6,7 @@ from profiles.models import Profile
 
 
 class BoostSerializer(serializers.ModelSerializer):
-    profile = serializers.ReadOnlyField(source='profile.owner.username')
+    profile_name = serializers.ReadOnlyField(source='profile.name')
     is_owner = serializers.SerializerMethodField()
 
     def get_is_owner(self, obj):
@@ -16,7 +16,8 @@ class BoostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Boost
         fields = [
-            'id', 'profile', 'created_at', 'recommendation', 'is_owner'
+            'id', 'profile', 'created_at', 'recommendation', 'is_owner',
+            'profile_name'
         ]
 
     def create(self, validated_data):

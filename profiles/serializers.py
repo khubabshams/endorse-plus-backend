@@ -4,7 +4,6 @@ from recommendation_requests.models import Request
 
 
 class ProfileSerializer(serializers.ModelSerializer):
-    owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
     unseen_requests_count = serializers.SerializerMethodField()
     recommendations_sent_count = serializers.ReadOnlyField()
@@ -27,7 +26,7 @@ class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
         fields = [
-            'id', 'owner', 'created_at', 'updated_at',
+            'id', 'name', 'created_at', 'updated_at',
             'linkedin_profile_url', 'summary', 'image', 'requests_sent',
             'requests_received', 'recommendations_sent',
             'recommendations_received', 'boosts', 'is_owner',

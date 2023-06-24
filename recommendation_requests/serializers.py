@@ -7,7 +7,7 @@ from profiles.models import Profile
 
 
 class RequestSerializer(serializers.ModelSerializer):
-    profile = serializers.ReadOnlyField(source='profile.owner.username')
+    profile_name = serializers.ReadOnlyField(source='profile.name')
     is_owner = serializers.SerializerMethodField()
     created_at = serializers.SerializerMethodField()
 
@@ -22,7 +22,7 @@ class RequestSerializer(serializers.ModelSerializer):
         model = Request
         fields = [
             'id', 'profile', 'receiver', 'created_at', 'seen', 'message',
-            'is_owner',
+            'is_owner', 'profile_name'
         ]
 
     def __init__(self, *args, **kwargs):
