@@ -11,8 +11,8 @@ class RequestSerializer(serializers.ModelSerializer):
     profile_name = serializers.ReadOnlyField(source='profile.name')
     receiver_title = serializers.ReadOnlyField(source='receiver.title')
     profile_title = serializers.ReadOnlyField(source='profile.title')
-    receiver_image = serializers.ReadOnlyField(source='receiver.image')
-    profile_image = serializers.ReadOnlyField(source='profile.image')
+    receiver_image = serializers.ReadOnlyField(source='receiver.image.url')
+    profile_image = serializers.ReadOnlyField(source='profile.image.url')
     is_owner = serializers.SerializerMethodField()
     created_at = serializers.SerializerMethodField()
 
