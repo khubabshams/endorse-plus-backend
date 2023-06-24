@@ -13,6 +13,8 @@ class RecommendationSerializer(serializers.ModelSerializer):
     profile_name = serializers.ReadOnlyField(source='profile.name')
     receiver_title = serializers.ReadOnlyField(source='receiver.title')
     profile_title = serializers.ReadOnlyField(source='profile.title')
+    receiver_image = serializers.ReadOnlyField(source='receiver.image')
+    profile_image = serializers.ReadOnlyField(source='profile.image')
     is_owner = serializers.SerializerMethodField()
     boost_id = serializers.SerializerMethodField()
     boosts_count = serializers.ReadOnlyField()
@@ -43,7 +45,8 @@ class RecommendationSerializer(serializers.ModelSerializer):
             'id', 'profile', 'created_at', 'updated_at', 'receiver', 'content',
             'is_featured', 'related_experience', 'relation', 'boosts',
             'profile_name', 'receiver_name', 'profile_title', 'receiver_title',
-            'is_owner', 'boost_id', 'boosts_count'
+            'is_owner', 'boost_id', 'boosts_count', 'receiver_image',
+            'profile_image'
         ]
 
     def __init__(self, *args, **kwargs):

@@ -11,6 +11,8 @@ class RequestSerializer(serializers.ModelSerializer):
     profile_name = serializers.ReadOnlyField(source='profile.name')
     receiver_title = serializers.ReadOnlyField(source='receiver.title')
     profile_title = serializers.ReadOnlyField(source='profile.title')
+    receiver_image = serializers.ReadOnlyField(source='receiver.image')
+    profile_image = serializers.ReadOnlyField(source='profile.image')
     is_owner = serializers.SerializerMethodField()
     created_at = serializers.SerializerMethodField()
 
@@ -26,7 +28,7 @@ class RequestSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'profile', 'receiver', 'created_at', 'seen', 'message',
             'is_owner', 'profile_name', 'receiver_name', 'profile_title',
-            'receiver_title'
+            'receiver_title', 'receiver_image', 'profile_image'
         ]
 
     def __init__(self, *args, **kwargs):
