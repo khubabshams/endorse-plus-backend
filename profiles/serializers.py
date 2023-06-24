@@ -26,7 +26,7 @@ class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
         fields = [
-            'id', 'name', 'created_at', 'updated_at',
+            'id', 'name', 'title', 'created_at', 'updated_at',
             'linkedin_profile_url', 'summary', 'image', 'requests_sent',
             'requests_received', 'recommendations_sent',
             'recommendations_received', 'boosts', 'is_owner',
