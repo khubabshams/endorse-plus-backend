@@ -7,7 +7,10 @@ from profiles.models import Profile
 
 
 class RequestSerializer(serializers.ModelSerializer):
+    receiver_name = serializers.ReadOnlyField(source='receiver.name')
     profile_name = serializers.ReadOnlyField(source='profile.name')
+    receiver_title = serializers.ReadOnlyField(source='receiver.title')
+    profile_title = serializers.ReadOnlyField(source='profile.title')
     is_owner = serializers.SerializerMethodField()
     created_at = serializers.SerializerMethodField()
 
@@ -22,7 +25,8 @@ class RequestSerializer(serializers.ModelSerializer):
         model = Request
         fields = [
             'id', 'profile', 'receiver', 'created_at', 'seen', 'message',
-            'is_owner', 'profile_name'
+            'is_owner', 'profile_name', 'receiver_name', 'profile_title',
+            'receiver_title'
         ]
 
     def __init__(self, *args, **kwargs):

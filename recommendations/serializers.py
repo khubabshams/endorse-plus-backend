@@ -9,7 +9,10 @@ from experiences.models import Experience
 
 
 class RecommendationSerializer(serializers.ModelSerializer):
+    receiver_name = serializers.ReadOnlyField(source='receiver.name')
     profile_name = serializers.ReadOnlyField(source='profile.name')
+    receiver_title = serializers.ReadOnlyField(source='receiver.title')
+    profile_title = serializers.ReadOnlyField(source='profile.title')
     is_owner = serializers.SerializerMethodField()
     boost_id = serializers.SerializerMethodField()
     boosts_count = serializers.ReadOnlyField()
@@ -39,7 +42,8 @@ class RecommendationSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'profile', 'created_at', 'updated_at', 'receiver', 'content',
             'is_featured', 'related_experience', 'relation', 'boosts',
-            'profile_name', 'is_owner', 'boost_id', 'boosts_count'
+            'profile_name', 'receiver_name', 'profile_title', 'receiver_title',
+            'is_owner', 'boost_id', 'boosts_count'
         ]
 
     def __init__(self, *args, **kwargs):
