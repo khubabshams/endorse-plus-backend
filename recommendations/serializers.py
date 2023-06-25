@@ -55,7 +55,7 @@ class RecommendationSerializer(serializers.ModelSerializer):
             serializers.UniqueTogetherValidator(
                 queryset=model.objects.all(),
                 fields=('profile', 'receiver', 'related_experience'),
-                message=("You cannot recommended this user on the "
+                message=("You cannot recommend the same user on the "
                          "same experience twice.")
             )
         ]
