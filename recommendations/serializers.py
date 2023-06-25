@@ -51,6 +51,14 @@ class RecommendationSerializer(serializers.ModelSerializer):
             'is_owner', 'boost_id', 'boosts_count', 'receiver_image',
             'profile_image', 'relation_name', 'company_name'
         ]
+        validators = [
+            serializers.UniqueTogetherValidator(
+                queryset=model.objects.all(),
+                fields=('profile', 'receiver', 'related_experience'),
+                message=("You cannot recommended this user on the "
+                         "same experience twice.")
+            )
+        ]
 
     def __init__(self, *args, **kwargs):
         """
