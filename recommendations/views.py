@@ -46,7 +46,7 @@ class RecommendationDetail(generics.RetrieveUpdateDestroyAPIView):
     ).order_by('-created_at')
 
 
-class RecommendationFeature(generics.UpdateAPIView):
+class RecommendationFeature(generics.RetrieveUpdateAPIView):
     serializer_class = RecommendationFeatureSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Recommendation.objects.all()

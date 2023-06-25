@@ -51,14 +51,14 @@ class RecommendationSerializer(serializers.ModelSerializer):
             'is_owner', 'boost_id', 'boosts_count', 'receiver_image',
             'profile_image', 'relation_name', 'company_name'
         ]
-        validators = [
-            serializers.UniqueTogetherValidator(
-                queryset=model.objects.all(),
-                fields=('profile', 'receiver', 'related_experience'),
-                message=("You cannot recommend the same user on the "
-                         "same experience twice.")
-            )
-        ]
+        # validators = [
+        #     serializers.UniqueTogetherValidator(
+        #         queryset=model.objects.all(),
+        #         fields=('profile', 'receiver', 'related_experience'),
+        #         message=("You cannot recommend the same user on the "
+        #                  "same experience twice.")
+        #     )
+        # ]
 
     def __init__(self, *args, **kwargs):
         """
@@ -103,8 +103,7 @@ class RecommendationSerializer(serializers.ModelSerializer):
         self.validate_receiver_experience(validated_data=validated_data)
 
         try:
-            instance.save()
-            return instance
+            return super().update(instance, validated_data)
         except IntegrityError:
             raise serializers.ValidationError(({
                 'detail':
@@ -122,14 +121,11 @@ class RecommendationFeatureSerializer(serializers.ModelSerializer):
         """
         override update to ensure only receiver is able to change is_feature
         """
-
-        try:
-            if instance.receiver != self.request.user.profile_id:
-                raise
-            instance.save()
-            return instance
-        except IntegrityError:
+        if instance.receiver != self.context['request'].user.profile:
             raise serializers.ValidationError(({
                 'detail':
                 ('Only the receiver can feature this recommendation!'),
             }))
+        instance.is_featured = validated_data.get('is_featured', False)
+        instance.save()
+        return instance
