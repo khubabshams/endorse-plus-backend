@@ -3,7 +3,8 @@ from rest_framework import generics, permissions, filters
 from django_filters.rest_framework import DjangoFilterBackend
 from endorse_plus_backend.permissions import IsOwnerOrReadonly
 from .models import Recommendation
-from .serializers import RecommendationSerializer
+from .serializers import RecommendationSerializer,\
+    RecommendationFeatureSerializer
 
 
 class RecommendationList(generics.ListCreateAPIView):
@@ -43,3 +44,9 @@ class RecommendationDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Recommendation.objects.annotate(
         boosts_count=Count('boosts', distinct=True),
     ).order_by('-created_at')
+
+
+class RecommendationFeature(generics.UpdateAPIView):
+    serializer_class = RecommendationFeatureSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    queryset = Recommendation.objects.all()

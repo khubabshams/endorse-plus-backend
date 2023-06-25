@@ -111,3 +111,25 @@ class RecommendationSerializer(serializers.ModelSerializer):
                 ('You have recommended this user for the same experience'
                  ' before!'),
             }))
+
+
+class RecommendationFeatureSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Recommendation
+        fields = ['is_featured']
+
+    def update(self, instance, validated_data):
+        """
+        override update to ensure only receiver is able to change is_feature
+        """
+
+        try:
+            if instance.receiver != self.request.user.profile_id:
+                raise
+            instance.save()
+            return instance
+        except IntegrityError:
+            raise serializers.ValidationError(({
+                'detail':
+                ('Only the receiver can feature this recommendation!'),
+            }))
