@@ -25,9 +25,11 @@ class RecommendationList(generics.ListCreateAPIView):
         'boosts__profile',
     ]
     search_fields = [
-        'profile__owner__username',
-        'receiver__owner__username',
-        'related_experience__title',
+        'receiver_name',
+        'profile_name',
+        'company_name',
+        'receiver_title',
+        'content'
     ]
     ordering_fields = [
         'boosts_count',
