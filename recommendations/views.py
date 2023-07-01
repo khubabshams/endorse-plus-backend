@@ -33,6 +33,8 @@ class RecommendationList(generics.ListCreateAPIView):
     ordering_fields = [
         'boosts_count',
         'boosts__created_at',
+        'created_at',
+        'is_featured',
     ]
 
     def perform_create(self, serializer):
