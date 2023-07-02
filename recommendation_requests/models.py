@@ -13,7 +13,6 @@ class Request(models.Model):
 
     class Meta:
         ordering = ['-created_at']
-        unique_together = ['profile', 'receiver']
 
     def __str__(self):
         return f"Request from {self.profile} to {self.receiver}"
