@@ -53,3 +53,22 @@ class RequestSerializer(serializers.ModelSerializer):
                 'detail':
                 'You cannot send recommendation request to same person twice!',
             }))
+
+
+class RequestSeenSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Request
+        fields = ['seen']
+
+    def update(self, instance, validated_data):
+        """
+        override update to ensure only receiver is able to change seen flag
+        """
+        if instance.receiver != self.context['request'].user.profile:
+            raise serializers.ValidationError(({
+                'detail':
+                ('Only the receiver can update this request!'),
+            }))
+        instance.seen = validated_data.get('seen', False)
+        instance.save()
+        return instance
