@@ -1,6 +1,6 @@
 from rest_framework import generics, permissions, filters
 from django_filters.rest_framework import DjangoFilterBackend
-from endorse_plus_backend.permissions import IsOwnerOrReadonly
+from endorse_plus_backend.permissions import IsOwnerOrReceiver
 from .models import Request
 from .serializers import RequestSerializer, RequestSeenSerializer
 
@@ -34,7 +34,7 @@ class RequestList(generics.ListCreateAPIView):
 
 class RequestDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = RequestSerializer
-    permission_classes = [IsOwnerOrReadonly]
+    permission_classes = [IsOwnerOrReceiver]
     queryset = Request.objects.all()
 
 
