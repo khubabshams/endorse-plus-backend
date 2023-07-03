@@ -26,6 +26,7 @@ class RequestList(generics.ListCreateAPIView):
     ]
     ordering_fields = [
         'created_at',
+        'seen',
     ]
 
     def perform_create(self, serializer):
