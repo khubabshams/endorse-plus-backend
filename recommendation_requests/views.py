@@ -20,8 +20,8 @@ class RequestList(generics.ListCreateAPIView):
         'seen',
     ]
     search_fields = [
-        'profile__owner__username',
-        'receiver__owner__username',
+        'profile__name',
+        'receiver__name',
         'message',
     ]
     ordering_fields = [
