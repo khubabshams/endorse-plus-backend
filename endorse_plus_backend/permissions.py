@@ -1,5 +1,4 @@
 from rest_framework import permissions
-from rest_framework.exceptions import PermissionDenied
 
 
 class IsOwnerOrReadonly(permissions.BasePermission):
@@ -22,5 +21,4 @@ class IsOwnerOrReceiver(permissions.BasePermission):
         if request.method in permissions.SAFE_METHODS or \
                 request.user in [obj.profile.owner, obj.receiver.owner]:
             return True
-        raise PermissionDenied({'detail':
-                                'You don not have permission to access'})
+        return request.user in [obj.profile.owner, obj.receiver.owner]
