@@ -4,6 +4,7 @@ from .models import Experience
 
 class ExperienceSerializer(serializers.ModelSerializer):
     profile_name = serializers.ReadOnlyField(source='profile.name')
+    company_name = serializers.ReadOnlyField(source='company.name')
     is_owner = serializers.SerializerMethodField()
     recommendations_count = serializers.ReadOnlyField()
 
@@ -17,5 +18,5 @@ class ExperienceSerializer(serializers.ModelSerializer):
             'id', 'profile', 'created_at', 'updated_at', 'title', 'company',
             'location', 'date_from', 'date_to', 'is_current', 'description',
             'recommendations', 'is_owner', 'recommendations_count',
-            'profile_name'
+            'profile_name', 'company_name'
         ]
