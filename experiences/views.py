@@ -24,12 +24,13 @@ class ExperienceList(generics.ListCreateAPIView):
     ]
     search_fields = [
         'title',
-        'company__name',
+        'company_name',
         'profile__owner__username',
     ]
     ordering_fields = [
         'recommendations_count',
         'recommendations__created_at',
+        'is_current',
     ]
 
     def perform_create(self, serializer):
