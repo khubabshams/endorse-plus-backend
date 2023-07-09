@@ -36,7 +36,7 @@ REST_FRAMEWORK = {
             else "dj_rest_auth.jwt_auth.JWTCookieAuthentication"
         )
     ],
-    "DEFAULT_PAGINATION_CLASS": ("rest_framework.pagination." 
+    "DEFAULT_PAGINATION_CLASS": ("rest_framework.pagination."
                                  "PageNumberPagination"),
     "PAGE_SIZE": 8,
     "DATETIME_FORMAT": "%d %B %Y",
@@ -182,7 +182,7 @@ AUTH_PASSWORD_VALIDATORS = [
                  "CommonPasswordValidator"),
     },
     {
-        "NAME": ("django.contrib.auth.password_validation." 
+        "NAME": ("django.contrib.auth.password_validation."
                  "NumericPasswordValidator"),
     },
 ]
