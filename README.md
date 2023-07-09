@@ -4,6 +4,7 @@
 
 [**Live Site URL**](https://endorse-plus.herokuapp.com/)
 
+# Table of Contents <!-- omit from toc -->
 - [Overview](#overview)
 - [Database Design](#database-design)
   - [Profile Model](#profile-model)
