@@ -16,11 +16,15 @@
 - [Technologies](#technologies)
   - [Languages and Frameworks](#languages-and-frameworks)
   - [Other Software and Libraries](#other-software-and-libraries)
+- [Testing](#testing)
 - [Credits](#credits)
 
 # Overview
 
 The API server side of the Endorse Plus application is built mainly using the Django Rest Framework to provide APIs through its generic API views. Postgresql is used to store the application data. Deployment has been done on the Heroku platform.
+
+[*Back to Top*](#table-of-contents)
+<hr>
 
 # Database Design
 
@@ -60,6 +64,9 @@ The models of the data in this application were designed as the following diagra
 - The profile is `ForeignKey` from the `Profile` model.
 - The recommendation is `ForeignKey` from the `Recommendation` model.
 
+[*Back to Top*](#table-of-contents)
+<hr>
+
 # Technologies
 
 ## Languages and Frameworks
@@ -70,6 +77,7 @@ The models of the data in this application were designed as the following diagra
 - [Cloudinary](https://cloudinary.com/) was used to store the site's static files and users' images.
 - [Dia](http://dia-installer.de/) was used to draw the designed database schema.
 - [Psycopg](https://pypi.org/project/psycopg2/) was used alongside [DJ-Database-URL](https://pypi.org/project/dj-database-url/) to create and handle the Postgresql connection.
+- [Coverage](https://pypi.org/project/coverage/) was used to measure the coverage of unit testing against the project's full functionality and generate the report.
 - [Visual Studio Code](https://code.visualstudio.com/) was used as a code editor to develop this project.
 - [Gitpod](https://gitpod.io/) was used as an online development environment to develop and test this project.
 - [Github](https://github.com/) was used to store the code of this project.
@@ -77,7 +85,28 @@ The models of the data in this application were designed as the following diagra
 - [QuillBot](https://quillbot.com/) was used to check the grammar of the readme file.
 - [Grammarly](https://marketplace.visualstudio.com/items?itemName=znck.grammarly) was used to check the grammar of the readme file on VS Code.
 
-<!-- # Testing -->
+[*Back to Top*](#table-of-contents)
+<hr>
+
+# Testing
+
+To ensure that the code is clean and to make future maintenance easier, automated unit test scenarios were created.
+
+<details>
+  <summary>Short Coverage Report</summary>
+
+![Short Coverage Report](docs/coverage_summary.PNG)
+</details>
+
+<details>
+  <summary>Full Coverage Report</summary>
+
+![Full Coverage Report](docs/coverage_full_report.png)
+</details>
+
+[*Back to Top*](#table-of-contents)
+<hr>
+
 # Credits
 
 - This project was developed based on the Code Institute's [DRF-API walkthrough project](https://github.com/Code-Institute-Solutions/drf-api).
