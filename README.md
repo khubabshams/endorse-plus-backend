@@ -19,6 +19,7 @@
 - [Credits](#credits)
 
 # Overview
+
 The API server side of the Endorse Plus application is built mainly using the Django Rest Framework to provide APIs through its generic API views. Postgresql is used to store the application data. Deployment has been done on the Heroku platform.
 
 # Database Design
